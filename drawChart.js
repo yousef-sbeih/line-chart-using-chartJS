@@ -1,7 +1,7 @@
 export function drawChart(
   canId,
-  xAxis,
-  yAxis,
+  jsonData,
+
   {
     labelText = "Line Chart",
     width = 500,
@@ -16,15 +16,17 @@ export function drawChart(
     let div = canvElement.parentNode;
     div.style.width = `${width}px`;
     div.style.height = `${height}px`;
+    let labels = jsonData.map((d) => d.date);
+    let data = jsonData.map((d) => d.value);
 
     let lineChart = new Chart(canvElement, {
       type: "line",
       data: {
-        labels: xAxis,
+        labels: labels,
         datasets: [
           {
             label: labelText,
-            data: yAxis,
+            data: data,
             borderColor: borderColor,
             backgroundColor: backgroundColor,
             showLine: showLine,

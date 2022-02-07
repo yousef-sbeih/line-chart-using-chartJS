@@ -1,12 +1,9 @@
 import { drawChart } from "./drawChart";
+import jsonData from "./data.json";
 
-const jsonData = await fetch("./data.json").then((res) => res.json());
-
-console.log({ jsonData });
-let labels = jsonData.map((d) => d.date);
-let data = jsonData.map((d) => d.value);
-drawChart("myChart", labels, data, {
+drawChart("myChart", jsonData, {
   width: 1000,
   height: 500,
   borderColor: "green",
+  showLine: true,
 });
